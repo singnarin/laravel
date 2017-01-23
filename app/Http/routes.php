@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request; // เรียกใช้งานคลาส Request
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,4 +13,26 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('testGet', function(){
+  return 'Test Get Route !';
+});
+
+Route::post('testPost', function() {
+  return 'Test Post Route !';
+});
+
+Route::get('loadForm', function(){
+  return View::make('testForm');
+});
+
+Route::any('anyRoute', function(){
+  return 'For Any Route !';
+});
+Route::get('myId/{id}', function($id){
+  return 'Id = '.$id;
+});
+Route::get('myName/{mane?}', function($name = null){
+  return 'name ='.$name;
 });
