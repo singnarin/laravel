@@ -31,8 +31,30 @@ Route::any('anyRoute', function(){
   return 'For Any Route !';
 });
 Route::get('myId/{id}', function($id){
-  return 'Id = '.$id;
+  return 'Id = '.$id. ' from regular expression route.';
+})
+->where('id', '[0-9]+');;
+Route::get('myName/{name?}', function($name = null){
+  return 'name = '.$name. ' from regular expression route.';
+})
+->where('name', '[A-Za-z]+');
+Route::get('myId-Name/{id}/{name}', function($id, $name){
+  return 'id = ' .$id.' and name = '.$name.' use array regex.';
+})
+->where(array('id' => '[0-9]+', 'name' => '[A-Za-z]+'));
+Route::group(array('prefix' => 'admin'), function(){
+  Route::get('user', function(){
+    return 'From admin/user';
+  });
 });
-Route::get('myName/{mane?}', function($name = null){
-  return 'name ='.$name;
+Route::get('testView', function(){
+  return View::make('testView');
 });
+Route::get('passVar', function(){
+  return View::make('passVar', array(
+    'name' => 'Hope'
+  ));
+});
+Route::get('/exam/index', 'ExamController@index');
+Route::get('/exam/myView', 'ExamController@myView');
+Route::get('/exam/showVar', 'ExamController@showVar');
