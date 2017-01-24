@@ -14,5 +14,5 @@
     </li>
   @endfor
   </ul>
-
+<a class="navbar-brand" href="#">Home</a>
 @stop
