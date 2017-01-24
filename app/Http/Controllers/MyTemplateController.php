@@ -8,15 +8,16 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 
-Class ExamController extends BaseController {
+class MyTemplateController extends BaseController{
   public function index(){
-    return '"index" Method From "ExamController".';
+    return View('my_template.index');
   }
-  public function myView(){
-    return View('exam.myView');
+  public function myVar(){
+    return View('my_template.myVar', array(
+      'var' => 'Hello This is my Var'
+    ));
   }
-  public function showVar(){
-    return View('exam.showVar')
-    ->with('var', 'abc_1234');
+  public function myCondition(){
+    return View('my_template.myCondition');
   }
 }

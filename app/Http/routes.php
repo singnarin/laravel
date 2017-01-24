@@ -58,3 +58,11 @@ Route::get('passVar', function(){
 Route::get('/exam/index', 'ExamController@index');
 Route::get('/exam/myView', 'ExamController@myView');
 Route::get('/exam/showVar', 'ExamController@showVar');
+Route::get('goToDisplay', 'ExamRedirectController@goToDisplay');
+Route::get('display', 'ExamRedirectController@display');
+Route::get('setText', 'ExamRedirectController@setText');
+Route::get('getText', 'ExamRedirectController@getText');
+Route::get('Okay', 'HomeController@okay');
+Route::get('MyTemplate', 'MyTemplateController@index');
+Route::get('myVar', 'MyTemplateController@myVar');
+Route::get('myCondition', 'MyTemplateController@myCondition');
