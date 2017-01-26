@@ -18,8 +18,8 @@ class ExamCookieController extends BaseController
 
   public function cookieForever()
   {
-    $cookie = Cookie::forever('name', 'value');
-    //return view('index', ['name'=> $name]);
-    echo Cookie::get('name');
+    $cookie = Cookie::forever('name', 'value',60);
+    return view('exam_cookie.cookieForever')
+      ->with ('name', $cookie);
   }
 }
