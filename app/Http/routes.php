@@ -69,3 +69,5 @@ Route::get('myCondition', 'MyTemplateController@myCondition');
 Route::get('myForm', 'examFormController@myForm');
 Route::get('url', 'ExamRequestController@url');
 Route::any('inputGet', 'ExamInputController@inputGet');
+Route::get('sessionPut', 'ExamSessionController@sessionPut');
+Route::get('cookieForever', 'ExamCookieController@cookieForever');
