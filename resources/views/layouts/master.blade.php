@@ -5,11 +5,15 @@
   <title>My Template</title>
 </head>
 <body>
-  <h1>My Template</h1>
+<div class="page-header" align="center">
+  <h1>Laravel 5.2</h1>
+</div>
   <div class="container-fluid">
-    @yield('content')
+    <div id="content">
+      @yield('content')
+    </div>
   </div>
-  <script src="js/jquery.min.js"></script>
-  <script src="bootstrap/js/bootstrap.min.css"></script>
+  {!! Html::script('js/jquery.min.js') !!}
+  {!! Html::script('bootstrap/js/bootstrap.min.css') !!}
 </body>
 </html>

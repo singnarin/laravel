@@ -66,3 +66,6 @@ Route::get('Okay', 'HomeController@okay');
 Route::get('MyTemplate', 'MyTemplateController@index');
 Route::get('myVar', 'MyTemplateController@myVar');
 Route::get('myCondition', 'MyTemplateController@myCondition');
+Route::get('myForm', 'examFormController@myForm');
+Route::get('url', 'ExamRequestController@url');
+Route::any('inputGet', 'ExamInputController@inputGet');
