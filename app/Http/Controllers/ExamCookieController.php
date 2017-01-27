@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Session;
 use Cookie;
+use Response;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -18,8 +19,8 @@ class ExamCookieController extends BaseController
 
   public function cookieForever()
   {
-    $cookie = Cookie::forever('name', 'value',60);
+    $cookie = Cookie::forever('name', 'value');
     return view('exam_cookie.cookieForever')
-      ->with ('name', $cookie);
+      ->with ('cookie', $cookie);
   }
 }

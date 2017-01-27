@@ -4,7 +4,7 @@
 @if (cookie('name') != null)
 <p>cookie is set</p>
 <p>
-  {{cookie('value')}}
+  {{$cookie}}
 </p>
 @else
 <p>cookie isn't set</p>
