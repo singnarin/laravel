@@ -72,4 +72,4 @@ Route::any('inputGet', 'ExamInputController@inputGet');
 Route::get('sessionPut', 'ExamSessionController@sessionPut');
 Route::get('cookieForever', 'ExamCookieController@cookieForever');
 Route::any('myUpload', 'ExamUploadController@myUpload');
-Route::get('testBelongsTo', 'book@testBelongsTo');
+Route::resource('books', 'BooksController@showBooks');

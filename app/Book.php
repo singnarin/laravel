@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Book extends Model
 {
     public $timestamps = false;
-    public function book(){
-      return $this->hasMany('App\Book');
+    public function category(){
+      return $this->belongsTo('App\Category');
     }
 }
