@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('book_db', 'forge'),
-            'username' => env('root', 'forge'),
-            'password' => env('tootuu7413', ''),
+            'host' => 'localhost',
+            'port' => '3306',
+            'database' => 'book_db',
+            'username' => 'root',
+            'password' => 'tootuu7413',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
