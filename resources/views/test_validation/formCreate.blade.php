@@ -1,13 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<h1>create</h1>
-@if ($errors->has())
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-            @endforeach
-        </div>
-@endif
+<h1>basicValidate</h1>
 <form action="create" method="POST">
 <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 {!! Form::label('category_id', 'Category') !!}
@@ -17,6 +10,5 @@
 {!! Form::label('price') !!}
 {!! Form::text('price') !!}<br />
 {!! Form::submit('Insert !') !!}
-
 </form>
 @stop

@@ -20,22 +20,47 @@ class BooksController extends Controller
     return View('test_relation.hasMany', compact('model'));
   }
 
-  public function create(Request $request){
-    $model = new Book;
-
+  public function formCreate(Request $request){
     $categoryOptions = Category::lists('name', 'id');
+    return View('test_validation.formCreate')
+      ->with('categoryOptions',$categoryOptions);
+  }
 
-    if($request->all()){
-      $model->category_id = $request->get('category_id');
-      $model->name = $request->get('name');
-      $model->price = $request->get('price');
-      $model->created = date('Y-m-d');
+  public function create(Request $request){
+    $rules = array(
+      'name' => 'required|min:5|max:10',
+      'price' => 'required|numeric'
+    );
+    $messages = array(
+      'required' => ':attribute ต้องกรอก',
+      'min' => ':attribute อย่างน้อย :min',
+      'max' => ':attribute ไม่เกิน :max',
+      'numeric' => ':attribute เป็นตัวเลข'
+    );
+    $validator = Validator($request->all(), $rules, $messages);
 
-      if($model->save()){
-        return "Save Success.";
-      }
-    }
-    return View('test_relation.create')
+    if($validator->fails()){
+      $messages = $validator->messages();
+      $categoryOptions = Category::lists('name', 'id');
+      return View('test_relation.create')
+        ->withErrors($validator)
+        ->with('categoryOptions',$categoryOptions);
+    }else{
+      $model = new Book;
+      $categoryOptions = Category::lists('name', 'id');
+
+        if($request->all()){
+          $model->category_id = $request->get('category_id');
+          $model->name = $request->get('name');
+          $model->price = $request->get('price');
+          $model->created = date('Y-m-d');
+
+            if($model->save()){
+              return "Save Success.";
+            }
+          }
+        }
+    return View('test_relation.formCreate')
       ->with('model', $model)
       ->with('categoryOptions',$categoryOptions);
   }

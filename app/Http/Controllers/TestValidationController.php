@@ -12,30 +12,24 @@ use App\Http\Requests;
 use App\Book;
 use App\Category;
 
-class TestValidationController extends BaseController{
-  public function basicValidate(Request $request){
-    $model = new Book;
-    $errors ='';
-    $rules = array(
-      'name' => 'request',
-      'price' => 'request'
-    );
+class TestValidationController extends Controller{
 
-    if($request->all()){
-      $validate = Validator::make('$request->all()', $rules);
-      if($validate->fails()){
-        $errors = $validate->maessages();
-        return Redirect('basicValidate')
-          ->withErrors($errors)
-          ->withInput();
-      }else {
-        $model->name = $request->get('name');
-        $model->price = $request->get('price');
-        if($model->save()){
-          return "Save Success";
+  public function basicValidate(Request $request){
+    
+      $model = new Book;
+      $categoryOptions = Category::lists('name', 'id');
+
+        if($request->all()){
+          $model->category_id = $request->get('category_id');
+          $model->name = $request->get('name');
+          $model->price = $request->get('price');
+          $model->created = date('Y-m-d');
+
+            if($model->save()){
+              return "Save Success.";
+            }
+          }
         }
-      }
-    }
     return View('test_validation.basicValidate');
   }
 }
